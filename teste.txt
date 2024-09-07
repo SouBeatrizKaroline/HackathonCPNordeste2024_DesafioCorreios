@@ -1,0 +1,16 @@
+app.get("/resposta", async (req, res) =>{
+    const pergunta = 'fale sobre o remessa coforme'
+    console.log(req.body.pergunta)
+    obterResposta(pergunta, base)
+        .then(resposta => {
+            res.render("resposta",{
+                pergunta: pergunta,
+                resposta: resposta
+            })
+            console.log("Resposta da OpenAI:", resposta);
+        })
+        .catch(error => {
+            console.error("Erro ao obter resposta:", error);
+        });
+    
+})
